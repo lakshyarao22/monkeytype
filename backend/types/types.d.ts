@@ -62,7 +62,7 @@ declare namespace MonkeyTypes {
     lastNameChange?: number;
     lbMemory?: object;
     lbPersonalBests?: LbPersonalBests;
-    name?: string;
+    name: string;
     customThemes?: CustomTheme[];
     personalBests?: PersonalBests;
     quoteRatings?: UserQuoteRatings;
@@ -93,6 +93,22 @@ declare namespace MonkeyTypes {
     personalBests?: PersonalBests;
   }
 
+  interface LeaderboardEntry {
+    _id: ObjectId;
+    acc: number;
+    consistency: number;
+    difficulty: Difficulty;
+    lazyMode: boolean;
+    language: string;
+    punctuation: boolean;
+    raw: number;
+    wpm: number;
+    timestamp: number;
+    uid: string;
+    name: string;
+    rank: number;
+  }
+
   interface CustomTheme {
     _id: ObjectId;
     name: string;
@@ -100,6 +116,7 @@ declare namespace MonkeyTypes {
   }
 
   interface ApeKey {
+    _id: ObjectId;
     uid: string;
     name: string;
     hash: string;
@@ -108,6 +125,16 @@ declare namespace MonkeyTypes {
     lastUsedOn: number;
     useCount: number;
     enabled: boolean;
+  }
+
+  interface NewQuote {
+    _id: ObjectId;
+    text: string;
+    source: string;
+    language: string;
+    submittedBy: string;
+    timestamp: number;
+    approved: boolean;
   }
 
   type Mode = "time" | "words" | "quote" | "zen" | "custom";
@@ -218,6 +245,7 @@ declare namespace MonkeyTypes {
   type ReportTypes = "quote";
 
   interface Report {
+    _id: ObjectId;
     id: string;
     type: ReportTypes;
     timestamp: number;
